@@ -6,7 +6,7 @@
 /*   By: mbani-ya <mbani-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 12:51:17 by mbani-ya          #+#    #+#             */
-/*   Updated: 2025/11/12 13:20:47 by mbani-ya         ###   ########.fr       */
+/*   Updated: 2025/11/12 22:18:15 by mbani-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ bool	ScalarConverter::isPseudo(const std::string& str)
 bool	ScalarConverter::isFloat(const std::string& str)
 {
 	int		dotFlag = 0;
-	int		i = 0;
 	bool	hasDigit = false;
+	size_t	i = 0;
+	size_t	lastChar = str.length() - 1;
 
-	if (str.back() != 'F' && str.back() != 'f')
+	if (str[lastChar] != 'F' && str[lastChar] != 'f')
 		return false;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	for(; i < (str.length() - 1); i++)
+	for(; i < lastChar; i++)
 	{
 		if (str[i] == '.')
 			dotFlag++;
@@ -72,7 +73,7 @@ bool	ScalarConverter::isChar(const std::string& str)
 bool	ScalarConverter::isDouble(const std::string &str)
 {
 	int		dotFlag = 0;
-	int		i = 0;
+	size_t	i = 0;
 	bool	hasDigit = false;
 
 	if (str[0] == '.')

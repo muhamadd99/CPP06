@@ -6,7 +6,7 @@
 /*   By: mbani-ya <mbani-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 20:04:16 by mbani-ya          #+#    #+#             */
-/*   Updated: 2025/11/12 12:53:14 by mbani-ya         ###   ########.fr       */
+/*   Updated: 2025/11/12 22:29:44 by mbani-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ScalarConverter::convert(const std::string& param)
 {
-	etype	type = checkType(param);
+	eType	type = checkType(param);
 	//create a string array
 	//use switch
 	switch(type)
@@ -46,13 +46,13 @@ void	ScalarConverter::convert(const std::string& param)
 		}
 		case INVALID:
 		{
-			handleInvalid(param);
+			handleInvalid();
 			break ;
 		}
 	}
 }
 
-etype	ScalarConverter::checkType(const std::string& param)
+eType	ScalarConverter::checkType(const std::string& param)
 {
 	if (param.empty())
 		return INVALID;
@@ -69,6 +69,7 @@ etype	ScalarConverter::checkType(const std::string& param)
 	//if no decimal no f
 	if(isDouble(param))
 		return DOUBLE;
+	return INVALID;
 }
 
 // //only number
