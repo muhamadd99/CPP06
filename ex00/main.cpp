@@ -3,5 +3,5 @@
 
 int main()
 {
-	std::cout << .0123123132f << std::endl;
+	std::cout << 42.5f << std::endl;
 }
