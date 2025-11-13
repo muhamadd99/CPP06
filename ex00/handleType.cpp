@@ -6,7 +6,7 @@
 /*   By: mbani-ya <mbani-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 12:52:42 by mbani-ya          #+#    #+#             */
-/*   Updated: 2025/11/13 10:25:45 by mbani-ya         ###   ########.fr       */
+/*   Updated: 2025/11/13 21:16:17 by mbani-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,22 @@ void	ScalarConverter::handlePseudo(const std::string& param)
 	{
 		std::cout << "Char: " << "Impossible" << std::endl;
 		std::cout << "Int: " << "Impossible" << std::endl;
-		std::cout << "Float: " << -std::numeric_limits<float>::infinity() << "f" << std::endl;
-		std::cout << "Double: " << -std::numeric_limits<double>::infinity() << std::endl;
+		std::cout << "Float: " << NINF_FLOAT << "f" << std::endl;
+		std::cout << "Double: " << NINF_DOUBLE << std::endl;
 	}
 	else if (param == "+inff" || param == "+inf")
 	{
 		std::cout << "Char: " << "Impossible" << std::endl;
 		std::cout << "Int: " << "Impossible" << std::endl;
-		std::cout << "Float: " << std::numeric_limits<float>::infinity() << "f" << std::endl;
-		std::cout << "Double: " << std::numeric_limits<double>::infinity() << std::endl;
+		std::cout << "Float: " << PINF_FLOAT << "f" << std::endl;
+		std::cout << "Double: " << PINF_DOUBLE << std::endl;
 	}
 	else if (param == "nan" || param == "nanf")
 	{
 		std::cout << "Char: " << "Impossible" << std::endl;
 		std::cout << "Int: " << "Impossible" << std::endl;
-		std::cout << "Float: " << std::numeric_limits<float>::quiet_NaN() << std::endl;
-		std::cout << "Double: " << std::numeric_limits<double>::quiet_NaN() << std::endl;
+		std::cout << "Float: " << NAN_FLOAT << "f" << std::endl;
+		std::cout << "Double: " << NAN_DOUBLE << std::endl;
 	}
 }
 
@@ -49,10 +49,9 @@ void	ScalarConverter::handleInt(const std::string& param)
 {
 	long	longValue = std::atol(param.c_str());
 
-	//what if they give value bigger than long?
 	if (longValue > MAX_INT || longValue < MIN_INT)
 	{
-		std::cout << "Overflow" << std::endl;
+		std::cout << "impossible" << std::endl;
 		return;
 	}
 	//char conversion
@@ -90,6 +89,7 @@ void	ScalarConverter::handleFloat(const std::string& param)
 	std::string	strNoF = param;
 	strNoF = strNoF.substr(0, strNoF.length() - 1);
 	float	f = std::atof(strNoF.c_str());
+	// long	l = std::atol(strNoF.c_str());
 	//add .0
 	bool NoDecimal = (f == static_cast<long long>(f));
 	
@@ -111,8 +111,8 @@ void	ScalarConverter::handleFloat(const std::string& param)
 		std::cout << "'" << static_cast<char>(f) << "'" << std::endl;
 	//int conversion
 	std::cout << "int: ";
-	if (f > MAX_INT || f < MIN_INT)
-		std::cout << "Overflow" << std::endl;
+	if (f >= MAX_INT || f < MIN_INT)
+		std::cout << "impossible" << std::endl;
 	else
 		std::cout << static_cast<int>(f) << std::endl;
 	//float conversion
@@ -146,13 +146,13 @@ void	ScalarConverter::handleDouble(const std::string& param)
 	//int conversion
 	std::cout << "int: ";
 	if (d > MAX_INT || d < MIN_INT)
-		std::cout << "Overflow" << std::endl;
+		std::cout << "impossible" << std::endl;
 	else
 		std::cout << static_cast<int>(d) << std::endl;
 	//float conversion
 	std::cout << "float: ";
 	if (d > MAX_FLOAT || d < MIN_FLOAT)
-		std::cout << "Overflow" << std::endl;
+		std::cout << "impossible" << std::endl;
 	else
 		std::cout << static_cast<float>(d) << (NoDecimal ? ".0f" : "f") << std::endl;
 	//double conversion

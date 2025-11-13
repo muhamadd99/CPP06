@@ -6,7 +6,7 @@
 /*   By: mbani-ya <mbani-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 20:04:12 by mbani-ya          #+#    #+#             */
-/*   Updated: 2025/11/12 22:19:37 by mbani-ya         ###   ########.fr       */
+/*   Updated: 2025/11/13 21:22:51 by mbani-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 # define MAX_FLOAT std::numeric_limits<float>::max() //3.40282e+38
 # define MIN_DOUBLE std::numeric_limits<double>::min() //-1.79769e+308
 # define MAX_DOUBLE std::numeric_limits<double>::max() //1.79769e+308
+# define NINF_FLOAT -std::numeric_limits<float>::infinity()
+# define PINF_FLOAT std::numeric_limits<float>::infinity()
+# define NINF_DOUBLE -std::numeric_limits<double>::infinity()
+# define PINF_DOUBLE std::numeric_limits<double>::infinity()
+# define NAN_FLOAT std::numeric_limits<float>::quiet_NaN()
+# define NAN_DOUBLE std::numeric_limits<double>::quiet_NaN()
 
 enum eType {
 	INVALID,

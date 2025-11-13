@@ -6,13 +6,11 @@
 /*   By: mbani-ya <mbani-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 11:07:58 by mbani-ya          #+#    #+#             */
-/*   Updated: 2025/11/13 11:11:00 by mbani-ya         ###   ########.fr       */
+/*   Updated: 2025/11/13 16:59:10 by mbani-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-
-#include <string>
 
 struct Data 
 {

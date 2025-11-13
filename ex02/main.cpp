@@ -6,13 +6,14 @@
 /*   By: mbani-ya <mbani-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:19:48 by mbani-ya          #+#    #+#             */
-/*   Updated: 2025/11/13 14:40:28 by mbani-ya         ###   ########.fr       */
+/*   Updated: 2025/11/13 17:07:52 by mbani-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
 #include <cstdlib>
 #include <iostream>
+#include <ctime>
 
 Base	* generate(void)
 {
@@ -64,7 +65,7 @@ void	identify(Base& p)
 int	main()
 {
 	std::cout << "=== PTR TESTING ===" << std::endl;
-	//seed
+	std::srand(std::time(0));
 	Base*	ptr1 = generate();
 	Base*	ptr2 = generate();
 	Base*	ptr3 = generate();

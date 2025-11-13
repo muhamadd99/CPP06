@@ -6,7 +6,7 @@
 /*   By: mbani-ya <mbani-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 12:51:17 by mbani-ya          #+#    #+#             */
-/*   Updated: 2025/11/13 09:40:46 by mbani-ya         ###   ########.fr       */
+/*   Updated: 2025/11/13 17:47:46 by mbani-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ bool	ScalarConverter::isInt(const std::string& str)
 		i++;
 	if (i == str.length())
 		return false;
-	for (size_t k = i; k < str.length(); k++)
-		if (!isdigit(str[k]))
+	for (; i < str.length(); i++)
+		if (!isdigit(str[i]))
 			return false;
 	return true;
 }
@@ -80,10 +80,10 @@ bool	ScalarConverter::isDouble(const std::string &str)
 	size_t	i = 0;
 	bool	hasDigit = false;
 
-	if (str[0] == '.')
+	if (str[i] == '-' || str[i] == '+') 
 		i++;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
+	// if (str[0] == '.')
+	// 	i++;
 	for(; i < str.length(); i++)
 	{
 		if (str[i] == '.')
