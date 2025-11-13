@@ -6,11 +6,26 @@
 /*   By: mbani-ya <mbani-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 20:04:16 by mbani-ya          #+#    #+#             */
-/*   Updated: 2025/11/12 22:29:44 by mbani-ya         ###   ########.fr       */
+/*   Updated: 2025/11/13 12:40:01 by mbani-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
+ScalarConverter::ScalarConverter(void) {}
+
+ScalarConverter::ScalarConverter(ScalarConverter const &other)
+{
+    *this = other;
+}
+
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
+{
+	(void)other;
+	return *this;
+}
+
+ScalarConverter::~ScalarConverter(void) {}
 
 void	ScalarConverter::convert(const std::string& param)
 {

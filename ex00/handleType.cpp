@@ -6,7 +6,7 @@
 /*   By: mbani-ya <mbani-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 12:52:42 by mbani-ya          #+#    #+#             */
-/*   Updated: 2025/11/12 22:47:45 by mbani-ya         ###   ########.fr       */
+/*   Updated: 2025/11/13 10:25:45 by mbani-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,37 +66,39 @@ void	ScalarConverter::handleInt(const std::string& param)
 	//int conversion
 	std::cout << "int: " << static_cast<int>(longValue) << std::endl;
 	//float conversion
-	std::cout << "float: " << static_cast<float>(longValue) << "f" << std::endl;
+	std::cout << "float: " << static_cast<float>(longValue) << ".0f" << std::endl;
 	//double conversion
-	std::cout << "double: " << static_cast<double>(longValue) << std::endl;
+	std::cout << "double: " << static_cast<double>(longValue) << ".0" << std::endl;
 }
 
 void	ScalarConverter::handleChar(const std::string& param)
 {
-	char	c = param[1];
-
+	char	c = (param.length() == 3) ? param[1] : param[0];
 	//char conversion
 	std::cout << "char: " << param << std::endl;
 	//int conversion
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
 	//float conversion
-	std::cout << "float: " << static_cast<float>(c) << "f" << std::endl;
+	std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
 	//double conversion
-	std::cout << "double: " << static_cast<double>(c) << std::endl;
+	std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
 }
 
 void	ScalarConverter::handleFloat(const std::string& param)
 {
+	//remove F
 	std::string	strNoF = param;
 	strNoF = strNoF.substr(0, strNoF.length() - 1);
 	float	f = std::atof(strNoF.c_str());
-	//how to check if more than max_float or min_float?
+	//add .0
+	bool NoDecimal = (f == static_cast<long long>(f));
 	
+	//check if more than max_float or min_float
 	if (std::isinf(f))
 	{
 		std::cout << "char: " << "impossible" << std::endl;
 		std::cout << "int: " << "impossible" << std::endl;
-        std::cout << "float: " << f << "f" << std::endl;
+        std::cout << "float: " << f << std::endl;
         std::cout << "double: " << static_cast<double>(f) << std::endl;
 	}
 	//char conversion
@@ -110,21 +112,20 @@ void	ScalarConverter::handleFloat(const std::string& param)
 	//int conversion
 	std::cout << "int: ";
 	if (f > MAX_INT || f < MIN_INT)
-	{
 		std::cout << "Overflow" << std::endl;
-		return;
-	}
 	else
-		std::cout << f << std::endl;
+		std::cout << static_cast<int>(f) << std::endl;
 	//float conversion
-	std::cout << "float: " << static_cast<int>(f) << "f" << std::endl;
+	std::cout << "float: " << f << (NoDecimal ? ".0f" : "f") << std::endl;
 	//double conversion
-	std::cout << "double: " << static_cast<double>(f) << std::endl;
+	std::cout << "double: " << static_cast<double>(f) << (NoDecimal ? ".0" : "") << std::endl;
 }
 
 void	ScalarConverter::handleDouble(const std::string& param)
 {
 	double	d = std::atof(param.c_str());
+	//add .0
+	bool NoDecimal = (d == static_cast<long long>(d));
 	
 	if (std::isinf(d)) 
     {
@@ -145,21 +146,15 @@ void	ScalarConverter::handleDouble(const std::string& param)
 	//int conversion
 	std::cout << "int: ";
 	if (d > MAX_INT || d < MIN_INT)
-	{
 		std::cout << "Overflow" << std::endl;
-		return;
-	}
 	else
 		std::cout << static_cast<int>(d) << std::endl;
 	//float conversion
 	std::cout << "float: ";
 	if (d > MAX_FLOAT || d < MIN_FLOAT)
-	{
 		std::cout << "Overflow" << std::endl;
-		return;
-	}
 	else
-		std::cout << d << std::endl;
+		std::cout << static_cast<float>(d) << (NoDecimal ? ".0f" : "f") << std::endl;
 	//double conversion
-	std::cout << "double: " << d << std::endl;
+	std::cout << "double: " << d << (NoDecimal ? ".0" : "") << std::endl;
 }

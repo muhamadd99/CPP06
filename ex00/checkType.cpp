@@ -6,7 +6,7 @@
 /*   By: mbani-ya <mbani-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 12:51:17 by mbani-ya          #+#    #+#             */
-/*   Updated: 2025/11/12 22:18:15 by mbani-ya         ###   ########.fr       */
+/*   Updated: 2025/11/13 09:40:46 by mbani-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,12 @@ bool	ScalarConverter::isInt(const std::string& str)
 //return true if displayable char
 bool	ScalarConverter::isChar(const std::string& str)
 {
-	return (str.length() == 3 && str[0] == '\'' 
-		&& str[2] == '\'' && str[1] >= 32 && str[1] <= 126);
+	if (str.length() == 1 && std::isprint(str[0]))
+		return (true);
+	if (str.length() == 3 && str[0] == '\'' 
+		&& str[2] == '\'' && std::isprint(str[0]))
+		return (true);
+	return (false);
 }
 
 //handle + -
