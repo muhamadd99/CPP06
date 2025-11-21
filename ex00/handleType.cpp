@@ -6,7 +6,7 @@
 /*   By: mbani-ya <mbani-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 12:52:42 by mbani-ya          #+#    #+#             */
-/*   Updated: 2025/11/13 21:16:17 by mbani-ya         ###   ########.fr       */
+/*   Updated: 2025/11/14 09:49:51 by mbani-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void	ScalarConverter::handleFloat(const std::string& param)
 	std::string	strNoF = param;
 	strNoF = strNoF.substr(0, strNoF.length() - 1);
 	float	f = std::atof(strNoF.c_str());
-	// long	l = std::atol(strNoF.c_str());
 	//add .0
 	bool NoDecimal = (f == static_cast<long long>(f));
 	
@@ -100,6 +99,7 @@ void	ScalarConverter::handleFloat(const std::string& param)
 		std::cout << "int: " << "impossible" << std::endl;
         std::cout << "float: " << f << std::endl;
         std::cout << "double: " << static_cast<double>(f) << std::endl;
+		return ; //eval
 	}
 	//char conversion
 	std::cout << "char: ";

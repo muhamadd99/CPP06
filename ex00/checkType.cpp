@@ -6,7 +6,7 @@
 /*   By: mbani-ya <mbani-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 12:51:17 by mbani-ya          #+#    #+#             */
-/*   Updated: 2025/11/13 17:47:46 by mbani-ya         ###   ########.fr       */
+/*   Updated: 2025/11/14 14:21:58 by mbani-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,6 @@ bool	ScalarConverter::isDouble(const std::string &str)
 
 	if (str[i] == '-' || str[i] == '+') 
 		i++;
-	// if (str[0] == '.')
-	// 	i++;
 	for(; i < str.length(); i++)
 	{
 		if (str[i] == '.')
